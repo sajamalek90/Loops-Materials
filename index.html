@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Loops</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>JavaScript Loops</h1>
+        <nav>
+            <ul>
+                <li><a href="#loop-basics">Loop Basics</a></li>
+                <li><a href="#loop-control">Loop Control</a></li>
+                <li><a href="#loop-types">Loop Types</a></li>
+                <li><a href="#loop-challenges">Challenges</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="loop-basics">
+            <h2>Loop Fundamentals</h2>
+
+            <article id="for-loop">
+                <h3>Loop For And Concept Of Loop</h3>
+                <p>Loops execute a block of code repeatedly until a condition is met. The <code>for</code> loop is the most common looping structure.</p>
+                <pre><code>// Basic for loop structure
+for (initialization; condition; increment) {
+    // code to execute
+}
+
+// Example: Count from 1 to 5
+for (let i = 1; i <= 5; i++) {
+    console.log(i);
+}</code></pre>
+                <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190328142225/loop2.png" alt="For loop flowchart" style="width: 700px; margin: auto;">
+                <p>Key components: initialization, condition check, increment/decrement</p>
+            </article>
+
+            <article id="looping-sequences">
+                <h3>Looping On Sequences</h3>
+                <p>Loops are commonly used to iterate through arrays and other sequences.</p>
+                <pre><code>// Looping through an array
+const fruits = ['apple', 'banana', 'orange'];
+for (let i = 0; i < fruits.length; i++) {
+    console.log(fruits[i]);
+}
+
+// Looping through a string
+const message = "Hello";
+for (let char of message) {
+    console.log(char);
+}</code></pre>
+            </article>
+
+            <article id="nested-loops">
+                <h3>Nested Loops And Training's</h3>
+                <p>Nested loops are loops within loops, useful for working with multi-dimensional data.</p>
+                <pre><code>// Multiplication table using nested loops
+for (let i = 1; i <= 3; i++) {
+    for (let j = 1; j <= 3; j++) {
+        console.log(`${i} * ${j} = ${i * j}`);
+    }
+}
+
+// Processing a matrix
+const matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+
+for (let row = 0; row < matrix.length; row++) {
+    for (let col = 0; col < matrix[row].length; col++) {
+        console.log(matrix[row][col]);
+    }
+}</code></pre>
+                <img src="https://runestone.academy/ns/books/published/csawesome/_images/nestedloops.png" alt="Nested loops visualization" style="margin: auto;">
+            </article>
+        </section>
+
+        <section id="loop-control">
+            <h2>Loop Control</h2>
+
+            <article id="loop-control-statements">
+                <h3>Loop Control – Continue, Break, Label</h3>
+                <p>Control statements alter the normal flow of loops.</p>
+                <pre><code>// break - exits the loop entirely
+for (let i = 1; i <= 10; i++) {
+    if (i === 5) break;
+    console.log(i); // Stops at 4
+}
+
+// continue - skips current iteration
+for (let i = 1; i <= 5; i++) {
+    if (i === 3) continue;
+    console.log(i); // Skips 3
+}
+
+// label - identifies loops for control
+outerLoop: for (let i = 1; i <= 3; i++) {
+    innerLoop: for (let j = 1; j <= 3; j++) {
+        if (i === 2 && j === 2) break outerLoop;
+        console.log(`i=${i}, j=${j}`);
+    }
+}</code></pre>
+                <img src="https://d3m1rm8xuevz4q.cloudfront.net/wp-content/uploads/2022/03/Control-flow-in-JavaScript-2.png.webp" alt="Loop control flow">
+            </article>
+
+            <article id="advanced-examples">
+                <h3>Loop For Advanced Examples</h3>
+                <p>Complex loop patterns for real-world scenarios.</p>
+                <pre><code>// Looping with step value
+for (let i = 0; i <= 10; i += 2) {
+    console.log(i); // Even numbers 0-10
+}
+
+// Reverse looping
+for (let i = 10; i >= 0; i--) {
+    console.log(i); // Countdown from 10
+}
+
+// Multiple variables in loop
+for (let i = 0, j = 10; i < j; i++, j--) {
+    console.log(`i=${i}, j=${j}`);
+}</code></pre>
+            </article>
+
+            <article id="practice-products">
+                <h3>Practice – Add Products To Page</h3>
+                <p>Practical example of dynamically adding content with loops.</p>
+                <pre><code>const products = [
+    { name: 'Laptop', price: 999 },
+    { name: 'Phone', price: 699 },
+    { name: 'Tablet', price: 499 }
+];
+
+const productList = document.getElementById('products');
+
+for (let product of products) {
+    const item = document.createElement('div');
+    item.className = 'product';
+    item.innerHTML = `
+        &lt;h3&gt;${product.name}&lt;/h3&gt;
+        &lt;p&gt;Price: $${product.price}&lt;/p&gt;
+    `;
+    productList.appendChild(item);
+}</code></pre>
+                <p>This creates a product listing dynamically from an array of objects.</p>
+            </article>
+        </section>
+
+        <section id="loop-types">
+            <h2>Other Loop Types</h2>
+
+            <article id="while-loop">
+                <h3>Loop – While</h3>
+                <p>The <code>while</code> loop repeats while a condition is true.</p>
+                <pre><code>// Basic while loop
+let count = 1;
+while (count <= 5) {
+    console.log(count);
+    count++;
+}
+
+// Real-world example - user input validation
+let userInput;
+while (true) {
+    userInput = prompt('Enter a number greater than 10:');
+    if (userInput > 10) break;
+    alert('Invalid input! Try again.');
+}</code></pre>
+                <img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1649623992834/oi8bGq-Hb.png?auto=compress,format&format=webp" alt="While loop flowchart" style="margin: auto;">
+            </article>
+
+            <article id="do-while-loop">
+                <h3>Loop – Do, While</h3>
+                <p>The <code>do...while</code> loop executes at least once before checking the condition.</p>
+                <pre><code>// Basic do...while loop
+let i = 1;
+do {
+    console.log(i);
+    i++;
+} while (i <= 5);
+
+// Menu system example
+let choice;
+do {
+    choice = prompt(`Choose an option:
+    1. View Profile
+    2. Edit Settings
+    3. Logout`);
+    
+    // Process choice...
+} while (choice !== '3');</code></pre>
+                <img src="https://cdn.programiz.com/sites/tutorial2program/files/cpp-do-while-loop-flowchart.png" alt="Do-while loop flowchart" style="margin: auto;">
+                <p>Key difference: The condition is checked after the first iteration.</p>
+            </article>
+        </section>
+
+        <section id="loop-challenges">
+            <h2>Loop Challenges</h2>
+
+            <article id="loop-challenge" class="challenge">
+                <h3>Loop Challenge</h3>
+                <p>Create a function that:</p>
+                <ol style="padding-left: 30px;">
+                    <li>Generates a multiplication table up to 10x10</li>
+                    <li>Primes numbers up to 100 using the Sieve of Eratosthenes</li>
+                    <li>Reverses a string without using built-in methods</li>
+                </ol>
+                <pre><code>// Multiplication table
+function multiplicationTable() {
+    for (let i = 1; i <= 10; i++) {
+        let row = '';
+        for (let j = 1; j <= 10; j++) {
+            row += (i * j).toString().padStart(4, ' ');
+        }
+        console.log(row);
+    }
+}
+
+// Prime numbers
+function findPrimes(limit) {
+    const sieve = [];
+    const primes = [];
+    
+    for (let i = 2; i <= limit; i++) {
+        if (!sieve[i]) {
+            primes.push(i);
+            for (let j = i * 2; j <= limit; j += i) {
+                sieve[j] = true;
+            }
+        }
+    }
+    return primes;
+}
+
+// String reversal
+function reverseString(str) {
+    let reversed = '';
+    for (let i = str.length - 1; i >= 0; i--) {
+        reversed += str[i];
+    }
+    return reversed;
+}</code></pre>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Loops, Lecture Materials. All rights reserved.</p>
+        <p>Powered by: <a href="https://www.linkedin.com/in/saja-malek/">Saja Malek</a></p>
+    </footer>
+</body>
+</html>
